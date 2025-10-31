@@ -54,6 +54,33 @@
             <input type="submit">
         </div>
     </form>
+
+    <script>
+        const form = document.getElementById("myForm");
+
+        form.addEventListener("submit", function(event) {
+            const firstName = document.getElementById("fname").value.trim();
+            const lastName = document.getElementById("lname").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const eircode = document.getElementById("eircode").value.trim();
+
+            const namePattern = /^[A-Za-z0-9]{1,20}$/;
+            const phonePattern = /^[0-9]{10}$/;
+            const eircodePattern = /^[0-9] [A-Za-Z0-9]{5}$/;
+
+            if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
+                event.preventDefault();
+            }
+
+            if(!phonePattern.test(phone)) {
+                event.preventDefault();
+            }
+
+            if (!eircodePattern.test(eircode)) {
+                event.preventDefault();
+            }
+        });
+    </script>
     
 </body>
 </html>
